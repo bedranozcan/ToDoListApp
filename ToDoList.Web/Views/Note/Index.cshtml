@@ -1,0 +1,33 @@
+﻿@using ToDoList.Core.Model
+@{
+    ViewData["Title"] = "Index";
+}
+@model List<NoteWithUserDto>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <td>ID</td>
+                <td>Description</td>         
+                <td>UserId</td>
+                <td>Actions</td>
+
+            </tr>
+
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Description</td>
+                    <td>@item.UserId</td>                    
+                    <td>
+                        <a class="btn btn-warning" asp-controller="Note" asp-action="Update" asp-route-id="@item.Id">Update</a>                                       
+                        <a class="btn btn-danger" asp-controller="Note" asp-action="Remove" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    
+    </table>
+<a class="btn btn-info" asp-controller="Note" asp-action="Save">Yeni Not Ekle</a>

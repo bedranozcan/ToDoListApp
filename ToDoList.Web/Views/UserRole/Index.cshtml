@@ -1,0 +1,34 @@
+﻿@using ToDoList.Core.Model
+
+@{
+    ViewData["Title"] = "Index";
+}
+@model List<UserRoleDto>
+ <table class="table table-striped">
+     <thead>
+         <tr>
+            <td>ID</td>
+            <td>Name</td>
+            <td>Update</td>
+            <td>Delete</td>
+
+         </tr>
+         
+     </thead>
+     <tbody>
+         @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Name</td>
+                <td>
+                    <a class="btn btn-warning" asp-controller="UserRole" asp-action="Update" asp-route-id="@item.Id">Update</a>
+                </td>
+                <td> 
+                    <a class="btn btn-danger" asp-controller="UserRole" asp-action="Remove" asp-route-id="@item.Id">Delete</a> 
+                 </td>
+            </tr>
+        }
+     </tbody>
+ </table>
+<a href="/UserRole/Save" class="btn btn-info">Yeni UserRole Ekle</a>
